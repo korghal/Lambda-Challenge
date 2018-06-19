@@ -7,7 +7,7 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-
+  return 'Hello World!';
 }
 
 /*
@@ -17,30 +17,47 @@ function helloWorld() {
      If num is divisible by 5 return the string 'School'
      If num is divisible by 3 AND 5 return the string 'Lambda School' (notice the space)
      If num is NOT divisible by 3 or 5 then return num.
-
      Example:
              lambdaSchool(15); // returns 'Lambda School'
              lambdaSchool(8); // returns 8
 */
 
-function lambdaSchool() {
-
+function lambdaSchool(num) {
+  if (num % 3 === 0 && num % 5 === 0) {
+    return 'Lambda School';
+  }
+  if (num % 3 === 0) {
+    return 'Lambda';
+  }
+  else if (num % 5 === 0) {
+    return 'School';
+  }
+  else {
+    return num;
+  }
 }
+
 
 /*
 3. Write a function called longestString that has a single parameter called strs.
      strs will be an array of strings.
      Return the longest string that is in strs.
      If there is a tie for the longest string then return the one that occurs first.
-
      Example:
              longestString(['hi', 'hello', 'ni hao', 'guten tag']); // returns 'guten tag'
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
-
+function longestString(strs) {
+  bigString = "";
+  for (let i = 0; i < strs.length; i++) {
+    if (bigString.length < strs[i].length) {
+      bigString = strs[i];
+    }
+  }
+  return bigString;
 }
+
 
 /*
 4. Write a function called computeUserAverageAge that has a single parameter called users
@@ -48,7 +65,6 @@ function longestString() {
      Each user object has a property called age that is a number.
      Compute the average age of all user objects in the users array.
      Round off the decimals if needed and return the number.
-
      Example:
              const users = [{
                name: 'Brendan Eich',
@@ -63,9 +79,21 @@ function longestString() {
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
 */
 
-function computeUserAverageAge() {
-
+function computeUserAverageAge(users) {
+  let totalAge = 0;
+  let i = null;
+  for (i = 0; i < users.length; i++) {
+    totalAge = totalAge + users[i].age;
+  }
+  // Debated using ceil to round up based off the above comment but decided to simply round. - Jason
+  return Math.round(totalAge / i); 
 }
+
+
+/*
+* I know there's a much better way to pack all these function calls so they're not so verbose and use less variables...
+* But I'm still working on learning the fine art of simplicity in code, especially Javascript. - Jason
+*/
 
 module.exports = {
  helloWorld,
